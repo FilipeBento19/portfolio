@@ -1,0 +1,6 @@
+node_modules/
+dist/
+# Remotion project for the videos: ~1 GB of renders and a licensed music track, kept local
+reel/
+.claude/
+.impeccable/
