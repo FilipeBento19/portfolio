@@ -42,7 +42,7 @@ async function send(e) {
     <section class="hero">
       <!-- Camadas ambientes do remote: base desfocada flutuando, onda de crista e brilho ciano -->
       <div class="ambient" aria-hidden="true">
-        <div class="ambient__base" />
+        <div class="ambient__base"><div class="ambient__fill" /><div class="ambient__wave" /></div>
         <div class="ambient__cyan" />
       </div>
       <div class="wordmark rise" aria-hidden="true">3D Artist</div>
