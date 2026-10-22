@@ -1,10 +1,19 @@
 <script setup>
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import NavBar from './components/NavBar.vue'
 import BreakdownViewer from './components/BreakdownViewer.vue'
 import { t, contact } from './i18n'
 
 const status = ref('idle') // idle | sending | ok | fail
+
+// Hero video only decodes while it is on screen, so it does not compete with the rest of the page.
+const reel = ref(null)
+let reelObserver
+onMounted(() => {
+  reelObserver = new IntersectionObserver(([e]) => (e.isIntersecting ? reel.value.play().catch(() => {}) : reel.value.pause()))
+  reelObserver.observe(reel.value)
+})
+onBeforeUnmount(() => reelObserver?.disconnect())
 
 // Models shown in each specialty card's breakdown viewer (images in /public/breakdowns/<id>/).
 const breakdowns = {
@@ -46,7 +55,7 @@ async function send(e) {
         </div>
       </div>
       <!-- Vídeo do site em motion (15 s, sem som); gerado pela composição SiteMotion em /reel -->
-      <video id="reel" class="reel rise rise--bg" :src="'reel.mp4'" :poster="'reel-poster.jpg'" autoplay muted loop playsinline :aria-label="t('hero.reel')" />
+      <video id="reel" ref="reel" class="reel rise rise--2" :src="'reel.mp4'" :poster="'reel-poster.jpg'" autoplay muted loop playsinline :aria-label="t('hero.reel')" />
     </section>
 
     <!-- Frase grande com tiles flutuantes -->
