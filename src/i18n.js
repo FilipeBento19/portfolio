@@ -1,12 +1,12 @@
 import { ref } from 'vue'
 
 // Todo o texto do site fica aqui. Edite PT e EN lado a lado.
-// Contatos: troque email, discord e o ID do Formspree.
+// Contatos: email, discord e o formulário do Formspree.
 export const contact = {
-  email: 'seuemail@exemplo.com',
+  email: 'bentofilipe19@gmail.com',
   discord: 'zmiister',
   linkedin: 'https://www.linkedin.com/in/filipe-bento-3b29a92b8/',
-  formspree: 'https://formspree.io/f/SEU_ID',
+  formspree: 'https://formspree.io/f/mwllejea',
 }
 
 const messages = {
